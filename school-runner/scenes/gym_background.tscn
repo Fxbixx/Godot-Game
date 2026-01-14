@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl0vtjj6fvr5"]
+
+[ext_resource type="Texture2D" uid="uid://d0jqwmeww7d3b" path="res://assets/BackgroundGym.png" id="1_cset7"]
+[ext_resource type="Texture2D" uid="uid://bfgytkks8u5b0" path="res://assets/craiyon_055221_16x16_minecraft_hevea_log_texture.png" id="2_1vobl"]
+
+[node name="GymBackground" type="Node2D"]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(1024, 0)
+repeat_times = 2
+
+[node name="TextureRect" type="TextureRect" parent="Parallax2D"]
+offset_right = 1024.0
+offset_bottom = 1024.0
+texture = ExtResource("1_cset7")
+
+[node name="TextureRect2" type="TextureRect" parent="Parallax2D"]
+offset_top = 610.0
+offset_right = 1024.0
+offset_bottom = 1634.0
+texture = ExtResource("2_1vobl")

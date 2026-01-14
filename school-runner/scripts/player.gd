@@ -24,5 +24,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	$"../CanvasLayer/Death".visible = true
+	$"../CanvasLayer/TextureButton".visible = true
+	$"../CanvasLayer/TextureButton2".visible = true
 	$AnimatedSprite2D.stop()
 	

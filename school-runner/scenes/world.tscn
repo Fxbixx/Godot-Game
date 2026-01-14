@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://0e08lku0qpi4"]
+[gd_scene load_steps=11 format=3 uid="uid://0e08lku0qpi4"]
 
 [ext_resource type="PackedScene" uid="uid://dnp2dr8fr6k1h" path="res://scenes/obstacles.tscn" id="1_4wyf3"]
 [ext_resource type="Script" uid="uid://dj5ytjtpyxjh5" path="res://scripts/world.gd" id="1_k0juu"]
 [ext_resource type="PackedScene" uid="uid://chhpv5imvxa07" path="res://scenes/player.tscn" id="1_nnsk1"]
+[ext_resource type="PackedScene" uid="uid://dl0vtjj6fvr5" path="res://scenes/gym_background.tscn" id="2_71j4m"]
 [ext_resource type="PackedScene" uid="uid://b0cbgrymurxgj" path="res://scenes/floor.tscn" id="2_rwgxs"]
+[ext_resource type="FontFile" uid="uid://dvi8a1isk2gvx" path="res://assets/font/Bangers-Regular.ttf" id="5_i7141"]
+[ext_resource type="Texture2D" uid="uid://waluvabhm4es" path="res://assets/button/MainButtonsQuit.png" id="6_4mrxx"]
+[ext_resource type="Texture2D" uid="uid://g0wll7qi6uqu" path="res://assets/button/MainButtonsStart.png" id="7_7r4gi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0juu"]
 bg_color = Color(0.16470589, 0.16470589, 0.16470589, 0.78431374)
@@ -14,23 +18,19 @@ bg_color = Color(0.16470589, 0.16470589, 0.16470589, 0.78431374)
 position = Vector2(240, 267)
 script = ExtResource("1_k0juu")
 
-[node name="Obstacles2" parent="." instance=ExtResource("1_4wyf3")]
-position = Vector2(856, -47)
-
-[node name="Obstacles" parent="." instance=ExtResource("1_4wyf3")]
-position = Vector2(258, -45)
+[node name="GymBackground" parent="." instance=ExtResource("2_71j4m")]
+position = Vector2(42, -267)
 
 [node name="Player" parent="." instance=ExtResource("1_nnsk1")]
-position = Vector2(-243, 232)
+position = Vector2(-231, 404)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(8, 9)
-zoom = Vector2(1.5, 1.5)
+position = Vector2(-5, -19)
 limit_top = 180
 limit_bottom = 570
 
 [node name="Floor" parent="." instance=ExtResource("2_rwgxs")]
-position = Vector2(229, 331)
+position = Vector2(8, 499)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -41,10 +41,11 @@ offset_top = 3.0
 offset_right = 1160.0
 offset_bottom = 647.0
 theme_override_colors/font_color = Color(0.72, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_i7141")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_k0juu")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_71j4m")
-text = "YOU DIED! Shitter!"
+text = "YOU DIED!!!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -54,3 +55,35 @@ offset_top = 22.0
 offset_right = 118.0
 offset_bottom = 56.0
 theme_override_font_sizes/font_size = 30
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
+visible = false
+offset_left = -9.0
+offset_top = 315.0
+offset_right = 608.0
+offset_bottom = 711.0
+texture_normal = ExtResource("6_4mrxx")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton2" type="TextureButton" parent="CanvasLayer"]
+visible = false
+offset_left = 565.0
+offset_top = 344.0
+offset_right = 1173.0
+offset_bottom = 623.0
+texture_normal = ExtResource("7_7r4gi")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Obstacles" parent="." instance=ExtResource("1_4wyf3")]
+position = Vector2(-199, 109)
+
+[node name="Obstacles2" parent="." instance=ExtResource("1_4wyf3")]
+position = Vector2(-148, 109)
+
+[node name="Obstacles3" parent="." instance=ExtResource("1_4wyf3")]
+position = Vector2(205, 102)
+
+[connection signal="pressed" from="CanvasLayer/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TextureButton2" to="." method="_on_texture_button_2_pressed"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnp2dr8fr6k1h"]
+
+[ext_resource type="Script" uid="uid://ckteul1dnsafb" path="res://scripts/obstacles.gd" id="1_b1ion"]
+[ext_resource type="Texture2D" uid="uid://6neslgndwitt" path="res://assets/transparent PNG/spike C.png" id="2_rw70g"]
+
+[node name="Obstacles" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_b1ion")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(392, 486)
+texture = ExtResource("2_rw70g")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-3.412506, -1.2350159)
+scale = Vector2(1.0125, 1.0017006)
+polygon = PackedVector2Array(393, 344, 345.09875, 444.47913, 319, 575, 318, 638, 468, 636, 466, 571, 440, 447)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(390, 344, 346, 444, 320, 578, 316, 640, 472, 632, 466, 576, 438, 450)

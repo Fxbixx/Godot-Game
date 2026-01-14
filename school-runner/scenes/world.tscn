@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://0e08lku0qpi4"]
+
+[ext_resource type="PackedScene" uid="uid://dnp2dr8fr6k1h" path="res://scenes/obstacles.tscn" id="1_4wyf3"]
+[ext_resource type="Script" uid="uid://dj5ytjtpyxjh5" path="res://scripts/world.gd" id="1_k0juu"]
+[ext_resource type="PackedScene" uid="uid://chhpv5imvxa07" path="res://scenes/player.tscn" id="1_nnsk1"]
+[ext_resource type="PackedScene" uid="uid://b0cbgrymurxgj" path="res://scenes/floor.tscn" id="2_rwgxs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0juu"]
+bg_color = Color(0.16470589, 0.16470589, 0.16470589, 0.78431374)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_71j4m"]
+
+[node name="World" type="Node2D"]
+position = Vector2(240, 267)
+script = ExtResource("1_k0juu")
+
+[node name="Obstacles2" parent="." instance=ExtResource("1_4wyf3")]
+position = Vector2(856, -47)
+
+[node name="Obstacles" parent="." instance=ExtResource("1_4wyf3")]
+position = Vector2(258, -45)
+
+[node name="Player" parent="." instance=ExtResource("1_nnsk1")]
+position = Vector2(-243, 232)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(8, 9)
+zoom = Vector2(1.5, 1.5)
+limit_top = 180
+limit_bottom = 570
+
+[node name="Floor" parent="." instance=ExtResource("2_rwgxs")]
+position = Vector2(229, 331)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Death" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = -3.0
+offset_top = 3.0
+offset_right = 1160.0
+offset_bottom = 647.0
+theme_override_colors/font_color = Color(0.72, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_k0juu")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_71j4m")
+text = "YOU DIED! Shitter!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+offset_left = 28.0
+offset_top = 22.0
+offset_right = 118.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 30
